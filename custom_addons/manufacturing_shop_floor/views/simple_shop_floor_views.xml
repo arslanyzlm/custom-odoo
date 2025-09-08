@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Simple Shop Floor Work Center View -->
+    <record id="view_simple_shop_floor_kanban" model="ir.ui.view">
+        <field name="name">simple.shop.floor.kanban</field>
+        <field name="model">manufacturing.work.center</field>
+        <field name="arch" type="xml">
+            <kanban class="o_shop_floor_kanban">
+                <field name="name"/>
+                <field name="current_work_order_count"/>
+                <field name="color"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card oe_kanban_global_click">
+                            <div class="oe_kanban_content">
+                                <div class="o_kanban_record_top">
+                                    <strong><field name="name"/></strong>
+                                </div>
+                                <div class="o_kanban_record_body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <button class="btn btn-primary btn-lg btn-block" 
+                                                    name="action_open_shop_floor" type="object">
+                                                Open Shop Floor
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-12 text-center">
+                                            <span class="badge badge-info">
+                                                <field name="current_work_order_count"/> Active Orders
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Action for Simple Shop Floor -->
+    <record id="action_simple_shop_floor" model="ir.actions.act_window">
+        <field name="name">Shop Floor</field>
+        <field name="res_model">manufacturing.work.center</field>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="view_simple_shop_floor_kanban"/>
+    </record>
+</odoo>

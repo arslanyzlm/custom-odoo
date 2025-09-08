@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Work Centers in Manufacturing menu -->
+    <menuitem id="menu_work_center" 
+              name="Work Centerss" 
+              action="action_work_center"
+              parent="mrp.menu_mrp_manufacturing" 
+              sequence="15"/>
+
+    <!-- Work Orders in Manufacturing menu -->
+    <menuitem id="menu_work_order" 
+              name="Work Orders" 
+              action="action_work_order"
+              parent="mrp.menu_mrp_manufacturing" 
+              sequence="16"/>
+
+    <!-- Optional: Work Center Configuration -->
+    <menuitem id="menu_work_center_config"
+              name="Work Centerss"
+              action="action_work_center" 
+              parent="mrp.menu_mrp_configuration"
+              sequence="50"/>
+</odoo>

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_work_center_user,manufacturing.work.center.user,model_manufacturing_work_center,mrp.group_mrp_user,1,1,1,0
+access_work_center_manager,manufacturing.work.center.manager,model_manufacturing_work_center,mrp.group_mrp_manager,1,1,1,1
+access_work_order_user,manufacturing.work.order.user,model_manufacturing_work_order,mrp.group_mrp_user,1,1,1,0
+access_work_order_manager,manufacturing.work.order.manager,model_manufacturing_work_order,mrp.group_mrp_manager,1,1,1,1
+access_time_tracking_user,manufacturing.time.tracking.user,model_manufacturing_time_tracking,mrp.group_mrp_user,1,1,1,0
+access_time_tracking_manager,manufacturing.time.tracking.manager,model_manufacturing_time_tracking,mrp.group_mrp_manager,1,1,1,1

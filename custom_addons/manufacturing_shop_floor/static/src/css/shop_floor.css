@@ -1,0 +1,87 @@
+/* Shop Floor Work Center Cards */
+.o_shop_floor_kanban .oe_kanban_card {
+    min-height: 200px;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.o_shop_floor_work_center {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.o_shop_floor_work_center:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+/* Shop Floor Form Layout */
+.o_shop_floor_form {
+    background: #f8f9fa;
+}
+
+.o_shop_floor_header {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.o_shop_floor_sheet {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Control Buttons */
+.o_shop_floor_controls .btn-lg {
+    min-height: 60px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Information Sections */
+.o_shop_floor_info,
+.o_shop_floor_time {
+    margin: 20px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+/* List View Enhancements */
+.o_shop_floor_list .o_list_table {
+    font-size: 16px;
+}
+
+.o_shop_floor_list .btn {
+    margin: 2px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .o_shop_floor_controls .btn-lg {
+        margin-bottom: 10px;
+    }
+    
+    .o_shop_floor_kanban .oe_kanban_card {
+        margin: 5px;
+        padding: 15px;
+    }
+    
+    .o_shop_floor_header h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Status Colors */
+.badge.badge-draft { background-color: #6c757d; }
+.badge.badge-ready { background-color: #17a2b8; }
+.badge.badge-progress { background-color: #ffc107; color: #212529; }
+.badge.badge-done { background-color: #28a745; }
+.badge.badge-cancelled { background-color: #dc3545; }
