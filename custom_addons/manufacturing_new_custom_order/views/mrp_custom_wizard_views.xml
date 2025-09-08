@@ -1,0 +1,156 @@
+<odoo>
+  <record id="view_mrp_custom_wizard_form" model="ir.ui.view">
+    <field name="name">mrp.custom.wizard.form</field>
+    <field name="model">mrp.custom.wizard</field>
+    <field name="arch" type="xml">
+      <form string="Custom Manufacturing Order">
+        <sheet>
+          <group>
+            <field name="type_selection"/>
+            <field name="kalip_no"/>
+            <field name="yan_no"/>
+            <field name="mold_type"/>
+            <field name="cap"
+                   required="(mold_type == 'solid' and (solid_havuz or solid_destek or solid_kapak or solid_bolster))
+                             or (mold_type == 'portol' and (portol_kopru or portol_disi or portol_destek or portol_bolster))"/>
+            <field name="takim_paket_boyu"/>
+          </group>
+
+          <!-- ========== SOLID ========== -->
+          <div class="o_group" invisible="mold_type != 'solid'">
+            <div class="o_row" style="margin-bottom:6px;">
+              <div class="o_col-2 o_form_label"/>
+              <div class="o_col-1 o_form_label">Seç</div>
+              <div class="o_col-4 o_form_label">Çelik</div>
+              <div class="o_col-4 o_form_label">Parça Paket Boyu</div>
+            </div>
+
+            <div class="o_row" style="gap:12px;">
+              <div class="o_col-2 o_form_label">Havuz</div>
+              <div class="o_col-1"><field name="solid_havuz" nolabel="1"/></div>
+              <div class="o_col-4">
+                <field name="solid_havuz_celik" nolabel="1"
+                       domain="[('categ_id.parent_id.name', '=', 'HAMMADDE'),
+         ('categ_id.name', '=', 'KALIP ÇELİĞİ')]"
+                       required="solid_havuz"/>
+              </div>
+              <div class="o_col-4"><field name="solid_havuz_paket" nolabel="1" required="solid_havuz"/></div>
+            </div>
+
+            <div class="o_row" style="gap:12px;">
+              <div class="o_col-2 o_form_label">Destek</div>
+              <div class="o_col-1"><field name="solid_destek" nolabel="1"/></div>
+              <div class="o_col-4">
+                <field name="solid_destek_celik" nolabel="1"
+                       domain="[('categ_id.parent_id.name', '=', 'HAMMADDE'),
+         ('categ_id.name', '=', 'KALIP ÇELİĞİ')]"
+                       required="solid_destek"/>
+              </div>
+              <div class="o_col-4"><field name="solid_destek_paket" nolabel="1" required="solid_destek"/></div>
+            </div>
+
+            <div class="o_row" style="gap:12px;">
+              <div class="o_col-2 o_form_label">Kapak</div>
+              <div class="o_col-1"><field name="solid_kapak" nolabel="1"/></div>
+              <div class="o_col-4">
+                <field name="solid_kapak_celik" nolabel="1"
+                       domain="[('categ_id.parent_id.name', '=', 'HAMMADDE'),
+         ('categ_id.name', '=', 'KALIP ÇELİĞİ')]"
+                       required="solid_kapak"/>
+              </div>
+              <div class="o_col-4"><field name="solid_kapak_paket" nolabel="1" required="solid_kapak"/></div>
+            </div>
+
+            <div class="o_row" style="gap:12px;">
+              <div class="o_col-2 o_form_label">Bolster</div>
+              <div class="o_col-1"><field name="solid_bolster" nolabel="1"/></div>
+              <div class="o_col-4">
+                <field name="solid_bolster_celik" nolabel="1"
+                       domain="[('categ_id.parent_id.name', '=', 'HAMMADDE'),
+         ('categ_id.name', '=', 'KALIP ÇELİĞİ')]"
+                       required="solid_bolster"/>
+              </div>
+              <div class="o_col-4"><field name="solid_bolster_paket" nolabel="1" required="solid_bolster"/></div>
+            </div>
+          </div>
+
+          <!-- ========== PORTOL ========== -->
+          <div class="o_group" invisible="mold_type != 'portol'">
+            <div class="o_row" style="margin-bottom:6px;">
+              <div class="o_col-2 o_form_label"/>
+              <div class="o_col-1 o_form_label">Seç</div>
+              <div class="o_col-4 o_form_label">Çelik</div>
+              <div class="o_col-4 o_form_label">Parça Paket Boyu</div>
+            </div>
+
+            <div class="o_row" style="gap:12px;">
+              <div class="o_col-2 o_form_label">Köprü</div>
+              <div class="o_col-1"><field name="portol_kopru" nolabel="1"/></div>
+              <div class="o_col-4">
+                <field name="portol_kopru_celik" nolabel="1"
+                       domain="[('categ_id.parent_id.name', '=', 'HAMMADDE'),
+         ('categ_id.name', '=', 'KALIP ÇELİĞİ')]"
+                       required="portol_kopru"/>
+              </div>
+              <div class="o_col-4"><field name="portol_kopru_paket" nolabel="1" required="portol_kopru"/></div>
+            </div>
+
+            <div class="o_row" style="gap:12px;">
+              <div class="o_col-2 o_form_label">Dişi</div>
+              <div class="o_col-1"><field name="portol_disi" nolabel="1"/></div>
+              <div class="o_col-4">
+                <field name="portol_disi_celik" nolabel="1"
+                       domain="[('categ_id.parent_id.name', '=', 'HAMMADDE'),
+         ('categ_id.name', '=', 'KALIP ÇELİĞİ')]"
+                       required="portol_disi"/>
+              </div>
+              <div class="o_col-4"><field name="portol_disi_paket" nolabel="1" required="portol_disi"/></div>
+            </div>
+
+            <div class="o_row" style="gap:12px;">
+              <div class="o_col-2 o_form_label">Destek</div>
+              <div class="o_col-1"><field name="portol_destek" nolabel="1"/></div>
+              <div class="o_col-4">
+                <field name="portol_destek_celik" nolabel="1"
+                       domain="[('categ_id.parent_id.name', '=', 'HAMMADDE'),
+         ('categ_id.name', '=', 'KALIP ÇELİĞİ')]"
+                       required="portol_destek"/>
+              </div>
+              <div class="o_col-4"><field name="portol_destek_paket" nolabel="1" required="portol_destek"/></div>
+            </div>
+
+            <div class="o_row" style="gap:12px;">
+              <div class="o_col-2 o_form_label">Bolster</div>
+              <div class="o_col-1"><field name="portol_bolster" nolabel="1"/></div>
+              <div class="o_col-4">
+                <field name="portol_bolster_celik" nolabel="1"
+                       domain="[('categ_id.parent_id.name', '=', 'HAMMADDE'),
+         ('categ_id.name', '=', 'KALIP ÇELİĞİ')]"
+                       required="portol_bolster"/>
+              </div>
+              <div class="o_col-4"><field name="portol_bolster_paket" nolabel="1" required="portol_bolster"/></div>
+            </div>
+          </div>
+
+          <footer>
+            <button name="action_create_product_and_mo" string="Create" type="object" class="btn-primary"/>
+            <button string="Cancel" special="cancel"/>
+          </footer>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_mrp_custom_wizard" model="ir.actions.act_window">
+    <field name="name">Custom MRP Order</field>
+    <field name="res_model">mrp.custom.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="target">current</field>
+    <field name="view_id" ref="view_mrp_custom_wizard_form"/>
+    <field name="context">{'form_view_initial_mode': 'edit'}</field>
+  </record>
+
+  <menuitem id="menu_custom_mrp_root" name="Custom MRP" parent="mrp.menu_mrp_root"/>
+  <menuitem id="menu_custom_mrp_wizard" name="Create Custom Order"
+            parent="menu_custom_mrp_root" action="action_mrp_custom_wizard"/>
+</odoo>

@@ -1,0 +1,6 @@
+<odoo>
+    <record id="group_steel_operator" model="res.groups">
+    <field name="name">Steel: Cutting Operator</field>
+    <field name="category_id" ref="base.module_category_inventory"/>
+    </record>
+</odoo>

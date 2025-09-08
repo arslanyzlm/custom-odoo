@@ -1,0 +1,25 @@
+<odoo>
+  <record id="mrp_production_form_steel_cut" model="ir.ui.view">
+    <field name="name">mrp.production.form.steel.cut</field>
+    <field name="model">mrp.production</field>
+    <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+    <field name="arch" type="xml">
+      <xpath expr="//header" position="inside">
+        <!-- Odoo 17/18: use 'invisible' instead of attrs/states -->
+        <button name="action_open_steel_cut_wizard"
+                string="Cut Steel"
+                type="object"
+                class="btn-primary"
+                invisible="[['state','!=','in_progress']]"/>
+      </xpath>
+    </field>
+  </record>
+
+  <record id="action_steel_cut_wizard" model="ir.actions.act_window">
+    <field name="name">Cut from Serial</field>
+    <field name="res_model">steel.cut.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+    <field name="context">{'default_production_id': active_id}</field>
+  </record>
+</odoo>

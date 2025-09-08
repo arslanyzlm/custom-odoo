@@ -1,0 +1,22 @@
+<odoo>
+  <!-- Top-level Steel menu under Inventory -->
+  <menuitem id="menu_steel_root"
+            name="Steel"
+            parent="stock.menu_stock_root"
+            sequence="90"/>
+
+  <!-- Action that opens the Steel Cuts model -->
+  <record id="action_steel_cut_tree" model="ir.actions.act_window">
+    <field name="name">Steel Cuts</field>
+    <field name="res_model">steel.cut</field>
+    <field name="view_mode">tree,form,pivot,graph</field>
+    <!-- Optional: restrict domain or context if you like -->
+  </record>
+
+  <!-- Menu item that uses the action ABOVE (note the module prefix) -->
+  <menuitem id="menu_steel_cuts"
+            name="Cuts"
+            parent="menu_steel_root"
+            action="steel_trace_serial.action_steel_cut_tree"
+            sequence="10"/>
+</odoo>
