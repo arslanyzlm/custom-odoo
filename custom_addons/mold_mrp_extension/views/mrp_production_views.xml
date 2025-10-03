@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<!-- FORM genişletme -->
+<record id="view_mrp_production_form_mold_extra" model="ir.ui.view">
+  <field name="name">mrp.production.form.mold.extra</field>
+  <field name="model">mrp.production</field>
+  <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+  <field name="arch" type="xml">
+  <xpath expr="//form/sheet/group" position="after">
+  <group string="Kalıp Bilgileri">
+    <field name="x_mold_id"/>
+    <field name="x_mold_component_id"/>
+    <field name="x_component_type"/>
+    <field name="x_tool_packet_length_mm"/>
+  </group>
+  <group string="Çelik / Paket">
+    <field name="x_steel_product_id"/>
+    <field name="x_part_packet_length_mm"/>
+    <field name="x_theoretical_steel_kg"/>
+  </group>
+  </xpath>
+  </field>
+</record>
+
+<!-- LIST genişletme: MO listesine sütunlar -->
+<record id="view_mrp_production_list_mold_extra" model="ir.ui.view">
+  <field name="name">mrp.production.list.mold.extra</field>
+  <field name="model">mrp.production</field>
+  <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+  <field name="arch" type="xml">
+  <xpath expr="//list" position="inside">
+    <field name="x_component_type" optional="show"/>
+    <field name="x_part_packet_length_mm" optional="show"/>
+    <field name="x_theoretical_steel_kg" optional="show"/>
+  </xpath>
+  </field>
+</record>
+</odoo>

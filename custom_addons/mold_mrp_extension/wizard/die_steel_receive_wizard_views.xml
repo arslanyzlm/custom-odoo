@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <!-- Wizard Form -->
+  <record id="view_die_steel_receive_wizard_form" model="ir.ui.view">
+    <field name="name">die.steel.receive.wizard.form</field>
+    <field name="model">die.steel.receive.wizard</field>
+    <field name="arch" type="xml">
+      <form string="Yeni Çelik Lotu ve Stok Girişi">
+        <group>
+          <field name="product_tmpl_id"/>
+          <field name="supplier_id"/>
+          <field name="certificate_no"/>
+          <field name="diameter_mm"/>
+          <field name="length_mm"/>
+          <field name="scale_weight_kg"/>
+          <field name="note"/>
+          <field name="certificate_file" filename="certificate_filename"/>
+        </group>
+        <footer>
+          <button string="İptal" class="btn-secondary" special="cancel"/>
+          <button string="Onayla" name="action_confirm" type="object" class="btn-primary"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <!-- Window Action -->
+  <record id="action_die_steel_receive_wizard" model="ir.actions.act_window">
+    <field name="name">Yeni Çelik Lotu</field>
+    <field name="res_model">die.steel.receive.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+    <field name="context">{"default_product_tmpl_id": active_id}</field>
+  </record>
+</odoo>

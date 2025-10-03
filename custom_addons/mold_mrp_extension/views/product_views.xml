@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="view_product_form_die_steel" model="ir.ui.view">
+    <field name="name">product.template.form.die.steel</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_only_form_view"/>
+    <field name="arch" type="xml">
+
+      <!-- Kalıp Çeliği grubu: sadece ilgili kategoride görünür -->
+      <xpath expr="//sheet/notebook/page[@name='general_information']/group" position="inside">
+        <group string="Kalıp Çeliği"
+               modifiers="{'invisible': [('categ_id','!=', ref('mold_mrp_extension.product_category_die_steel'))]}">
+          <field name="x_alloy"/>
+          <field name="x_diameter_mm"/>
+          <field name="tracking" readonly="1"/>
+        </group>
+      </xpath>
+
+      <!-- Header button: sadece ilgili kategoride görünür -->
+      <xpath expr="//header" position="inside">
+        <button name="%(mold_mrp_extension.action_die_steel_receive_wizard)d"
+                type="action"
+                string="Yeni Çelik Lotu"
+                class="oe_highlight"
+                modifiers="{'invisible': [('categ_id','!=', ref('mold_mrp_extension.product_category_die_steel'))]}"/>
+      </xpath>
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<!-- FORM: Lot formuna Kalıp Çeliği alanlarını ekle -->
+<record id="view_stock_lot_form_die_steel" model="ir.ui.view">
+    <field name="name">stock.lot.form.die.steel</field>
+    <field name="model">stock.lot</field>
+    <field name="inherit_id" ref="stock.view_production_lot_form"/>
+    <field name="arch" type="xml">
+    <!-- Odoo 17: <form><sheet> altında güvenli ankraj -->
+    <xpath expr="//form/sheet" position="inside">
+    <group string="Kalıp Çeliği Detayları">
+        <field name="x_certificate_no"/>
+        <field name="x_supplier_id"/>
+        <field name="x_diameter_mm"/>
+        <field name="x_length_mm"/>
+        <field name="x_scale_weight_kg"/>
+        <field name="x_note"/>
+        <field name="x_certificate_attachment_ids" widget="many2many_binary"/>
+    </group>
+    </xpath>
+    </field>
+</record>
+
+
+<!-- LIST: Lot listesine hızlı sütunları ekle -->
+<record id="view_stock_lot_list_die_steel" model="ir.ui.view">
+    <field name="name">stock.lot.list.die.steel</field>
+    <field name="model">stock.lot</field>
+    <field name="inherit_id" ref="stock.view_production_lot_tree"/>
+    <field name="arch" type="xml">
+    <!-- Odoo 17: <list> etiketi kullanılır; listenin sonuna alanları ekliyoruz -->
+    <xpath expr="//list" position="inside">
+        <field name="x_certificate_no" optional="show"/>
+        <field name="x_supplier_id" optional="show"/>
+        <field name="x_diameter_mm" optional="show"/>
+        <field name="x_length_mm" optional="show"/>
+        <field name="x_scale_weight_kg" optional="show"/>
+    </xpath>
+    </field>
+</record>
+</odoo>

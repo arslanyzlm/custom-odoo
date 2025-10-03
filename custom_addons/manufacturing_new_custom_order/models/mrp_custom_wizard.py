@@ -126,7 +126,7 @@ class CustomMrpWizard(models.TransientModel):
             if sel:
                 rows.append(f"{name}: Çelik={(celik.display_name if celik else '-')}, Parça Paket Boyu={paket or '-'}")
         return "; ".join(rows)
-    
+     
     def action_create_product_and_mo(self): 
         self.ensure_one()
         self._validate_selected()

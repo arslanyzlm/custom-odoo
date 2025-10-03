@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<!-- Product Category: Kalıp Çeliği -->
+<record id="product_category_die_steel" model="product.category">
+<field name="name">Kalıp Çeliği</field>
+<field name="parent_id" ref="product.product_category_all"/>
+<!-- Costing/valuation can be tuned later; keeping defaults safe for Community setups -->
+<!-- <field name="property_cost_method">fifo</field> -->
+<!-- <field name="property_valuation">manual_periodic</field> -->
+</record>
+</odoo>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="view_mrp_workorder_form_mold_extra" model="ir.ui.view">
+    <field name="name">mrp.workorder.form.mold.extra</field>
+    <field name="model">mrp.workorder</field>
+    <field name="inherit_id" ref="mrp.mrp_production_workorder_form_view_inherit"/>
+    <field name="arch" type="xml">
+        <!-- duration_expected alanını içeren group'tan SONRA ekle -->
+        <xpath expr="//form/sheet/group[.//field[@name='duration_expected']]" position="after">
+        <group string="KALIP BİLGİLERİ">
+            <field name="x_mold_id" readonly="1"/>
+            <field name="x_component_type" readonly="1"/>
+            <field name="x_part_packet_length_mm" readonly="1"/>
+            <field name="x_tool_packet_length_mm" readonly="1"/>
+        </group>
+        </xpath>
+    </field>
+</record>
+</odoo>

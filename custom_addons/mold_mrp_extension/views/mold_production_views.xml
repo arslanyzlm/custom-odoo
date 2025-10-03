@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<!-- Action & Menu -->
+<record id="action_mold_production" model="ir.actions.act_window">
+    <field name="name">Kalıplar</field>
+    <field name="res_model">mold.production</field>
+    <field name="view_mode">list,form</field>
+</record>
+
+<menuitem id="menu_mold_root" name="Kalıp Yönetimi" parent="mrp.menu_mrp_root" sequence="60"/>
+<menuitem id="menu_mold_production" name="Kalıplar" parent="menu_mold_root" action="action_mold_production"/>
+
+<!-- List -->
+<record id="view_mold_production_list" model="ir.ui.view">
+    <field name="name">mold.production.list</field>
+    <field name="model">mold.production</field>
+    <field name="arch" type="xml">
+    <list>
+        <field name="name"/>
+        <field name="type"/>
+        <field name="diameter_mm"/>
+        <field name="tool_packet_length_mm"/>
+        <field name="state"/>
+    </list>
+    </field>
+</record>
+<!-- Form -->
+<record id="view_mold_production_form" model="ir.ui.view">
+    <field name="name">mold.production.form</field>
+    <field name="model">mold.production</field>
+    <field name="arch" type="xml">
+    <form string="Kalıp">
+    <header>
+        <button name="action_start" type="object" string="Başlat (MO oluştur)"
+        class="oe_highlight"
+        modifiers="{'invisible': [('state','!=','draft')]}"/>
+    </header>
+    <sheet>
+    <group>
+        <field name="name"/>
+        <field name="type"/>
+        <field name="diameter_mm"/>
+        <field name="tool_packet_length_mm"/>
+    </group>
+    <notebook>
+        <page string="Bileşenler">
+            <field name="component_ids">
+            <list editable="bottom">
+                <field name="component_type"/>
+                <field name="steel_product_id" domain="[('product_tmpl_id.categ_id.name', '=', 'Kalıp Çeliği')]"/>
+                <field name="part_packet_length_mm"/>
+                <field name="theoretical_consumption_kg"/>
+                <field name="mrp_production_id"/>
+            </list>
+            </field>
+        </page>
+        <page string="Tasarım Dosyaları">
+            <field name="design_attachment_ids" widget="many2many_binary"/>
+        </page>
+        <page string="Durum">
+            <field name="state"/>
+            <chatter>
+            <field name="message_follower_ids"/>
+            <field name="message_ids"/>
+            </chatter>
+        </page>
+    </notebook>
+    </sheet>
+    </form>
+    </field>
+</record>
+</odoo>

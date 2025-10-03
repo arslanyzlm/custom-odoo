@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_die_steel_receive_wizard,die.steel.receive.wizard,model_die_steel_receive_wizard,base.group_user,1,1,1,0
+access_mold_production_user,mold.production,model_mold_production,base.group_user,1,1,1,0
+access_mold_component_user,mold.component,model_mold_component,base.group_user,1,1,1,0
